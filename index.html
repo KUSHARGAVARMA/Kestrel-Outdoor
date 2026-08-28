@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600..900&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-<!-- Your data collection tag / library script goes here -->
+<script src="https://assets.adobedtm.com/6a203c8a0ff8/636a1c0d32b1/launch-67044ccf2bdd-development.min.js" async></script>
 
 <style>
   :root{
@@ -288,10 +288,14 @@ PRODUCTS.forEach(p => {
   const addBtn = document.createElement("button");
   addBtn.className = "btn add-btn";
   addBtn.textContent = "Add to cart";
+  addBtn.dataset.sku = p.sku;
+  addBtn.dataset.name = p.name;
+  addBtn.dataset.price = p.price;
 
   addBtn.addEventListener("click", () => {
     // HOOK: fire your "add to cart" tracking call here.
     // e.g. reference p.sku, p.name, p.price for the event payload.
+    // These are also readable in Tags via event.target.dataset.sku / .name / .price
 
     addBtn.textContent = "Added ✓";
     addBtn.classList.add("added");
